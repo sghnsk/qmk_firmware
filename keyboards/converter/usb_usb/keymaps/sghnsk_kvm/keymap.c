@@ -59,16 +59,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 void keyboard_pre_init_user(void) {
     setPinOutput(F1);
-    writePinLow(F1);
+    writePinHigh(F1);
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
     switch (get_highest_layer(state)) {
     case 0:
-        writePinLow(F1);
+        writePinHigh(F1);
         break;
     case 1:
-        writePinHigh(F1);
+        writePinLow(F1);
         break;
     // default: //  for any other layers, or the default layer
     }
