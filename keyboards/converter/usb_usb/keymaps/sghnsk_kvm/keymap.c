@@ -60,6 +60,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 void keyboard_pre_init_user(void) {
     setPinOutput(F1);
     writePinHigh(F1);
+    setPinInput(F2);
+    // если включен 2 порт, а 1 отключен, то переключать слой для 2-го порта
+    if (readPin(F2))
+        layer_move(1);
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
